@@ -6,11 +6,12 @@ import play.api.mvc._
 class Application extends Controller {
 
   def index = Action {
-    Ok(views.html.index("Hello World"))
+    Ok(views.html.index("Hello World")).withCookies(Cookie("theme","blue")).withSession("user"->"Calin")
   }
 
   def secondpage = Action {
-    Ok(views.html.second("World"))
+    request=>request.session.get("user").map{user=>Ok("Hello"+user)}.getOrElse(Unauthorized{"You are not logged in"})
+
   }
 
   def hello(name:String)=Action{
@@ -35,10 +36,14 @@ class Application extends Controller {
 
 def optionalVal(title:Option[String])=Action{
   title match{
-    case s=>Ok(views.html.second(s.toString))
+    case s=>Ok(views.html.second(s.get))
     case None=>Ok(views.html.second("No values"))
   }
 }
 
   def index2(name:String) = TODO
+
+  def show(id:Long)=Action{
+    Ok("The id of the item is: "+id)
+  }
 }
