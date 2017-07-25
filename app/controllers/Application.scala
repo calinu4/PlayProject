@@ -2,8 +2,14 @@ package controllers
 
 import play.api._
 import play.api.mvc._
-
-class Application extends Controller {
+import models.Customer
+import play.api.data._
+import play.api.data.Forms._
+import play.api.Play.current
+import javax.inject.Inject
+import play.api.i18n.I18nSupport
+import play.api.i18n.MessagesApi
+class Application @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport{
 
   def index = Action {
     Ok(views.html.index("Hello World")).withCookies(Cookie("theme","blue")).withSession("user"->"Calin")
@@ -43,5 +49,18 @@ def optionalVal(title:Option[String])=Action{
 
   def show(id:Long)=Action{
     Ok("The id of the item is: "+id)
+  }
+
+  def customerForm = Form(mapping("Customer Name" -> nonEmptyText,
+    "Credit Limit" -> number(min = 0, max = 100000) )(Customer.apply)(Customer.unapply))
+
+  def index3 = Action {
+    Ok(views.html.index3(customerForm))
+  }
+
+  def createCustomer = Action { implicit request =>
+    customerForm.bindFromRequest().fold(
+      formWithErrors => BadRequest(views.html.index3(formWithErrors)),
+      customer => Ok(views.html.submittedOk(customer)))
   }
 }

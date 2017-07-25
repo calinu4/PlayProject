@@ -27,6 +27,12 @@ GET /items/$id<[0-9]+>                controllers.Application.show(id:Long)
 GET /option                           controllers.Application.optionalVal(title:Option[String])
 
 GET /about                             controllers.Default.redirect(to="secondpage")
+
+GET /index3                              controllers.Application.index3
+
+POST /index3                           controllers.Application.createCustomer
+
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
