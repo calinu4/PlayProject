@@ -10,7 +10,7 @@ class Application extends Controller {
   }
 
   def secondpage = Action {
-    request=>request.session.get("user").map{user=>Ok("Hello"+user)}.getOrElse(Unauthorized{"You are not logged in"})
+    request=>request.session.get("user").map{user=>Ok(views.html.second("Hello "+user))}.getOrElse(Unauthorized{"You are not logged in"})
 
   }
 
@@ -35,10 +35,8 @@ class Application extends Controller {
   }
 
 def optionalVal(title:Option[String])=Action{
-  title match{
-    case s=>Ok(views.html.second(s.get))
-    case None=>Ok(views.html.second("No values"))
-  }
+    Ok(views.html.second(title.getOrElse("No value")))
+
 }
 
   def index2(name:String) = TODO
