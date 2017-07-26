@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
+GET     /                           controllers.App.index
 
 #Second page
 GET   /secondpage                          controllers.Application.secondpage
@@ -33,6 +33,18 @@ GET /index3                              controllers.Application.index3
 POST /index3                           controllers.Application.createCustomer
 
 
+GET /listItems                         controllers.App.listItems()
+
+GET /create                       controllers.App.seeItem()
+
+POST /create                       controllers.App.createItem()
+
+GET /delete                       controllers.App.seeDelete()
+POST /delete                      controllers.App.deleteItem()
+
+GET /update                       controllers.App.seeUpdate()
+
+POST /update                       controllers.App.updateItem(index:Int)
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 

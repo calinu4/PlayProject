@@ -1,12 +1,11 @@
 @(customerForm:Form[Customer])(implicit messages: Messages)
 
-
 @import helper._
 
 @main("Customer Form") {
   @form(action=routes.Application.createCustomer()) {
     @inputText(customerForm("Credit Limit"))
     @inputText(customerForm("Customer Name"))
-    <input type="submit" value="Submit">
+    <input type="submit" value="Create Customer">
   }
 }

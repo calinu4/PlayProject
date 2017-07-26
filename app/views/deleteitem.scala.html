@@ -1,0 +1,10 @@
+@(itemform:Form[String])(implicit messages: Messages)
+
+@import helper._
+@main("Delete Item") {
+  @form(action=routes.App.deleteItem()) {
+    @inputText(itemform("name"),'_label -> "Name", '_showConstraints -> false)
+
+    <input type="submit" value="Delete Item">
+  }
+}

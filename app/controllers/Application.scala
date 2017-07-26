@@ -16,7 +16,7 @@ class Application @Inject()(val messagesApi: MessagesApi) extends Controller wit
   }
 
   def secondpage = Action {
-    request=>request.session.get("user").map{user=>Ok(views.html.second("Hello "+user))}.getOrElse(Unauthorized{"You are not logged in"})
+    request=>request.session.get("user").map{user=>Ok(views.html.second("Hello "+user+" This is a sessions example!"))}.getOrElse(Unauthorized{"You are not logged in"})
 
   }
 
@@ -48,7 +48,7 @@ def optionalVal(title:Option[String])=Action{
   def index2(name:String) = TODO
 
   def show(id:Long)=Action{
-    Ok("The id of the item is: "+id)
+    Ok("The id of the item is: "+ id)
   }
 
   def customerForm = Form(mapping("Customer Name" -> nonEmptyText,
