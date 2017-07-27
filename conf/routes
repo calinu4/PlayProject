@@ -42,9 +42,14 @@ POST /create                       controllers.App.createItem()
 GET /delete                       controllers.App.seeDelete()
 POST /delete                      controllers.App.deleteItem()
 
-GET /update                       controllers.App.seeUpdate()
+GET /update                       controllers.App.seeUpdate(ind:Int)
 
 POST /update                       controllers.App.updateItem(index:Int)
+
+GET /select                      controllers.App.seeSelect()
+
+POST /select                       controllers.App.selectItem()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 

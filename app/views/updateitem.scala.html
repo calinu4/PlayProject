@@ -1,14 +1,10 @@
-@(itemform:Form[Item])(items:Seq[Item])(implicit messages: Messages)
+@(itemform:Form[Item])(items:Seq[Item])(index:Int)(implicit messages: Messages)
 
 @import helper._
 @main("Update Form") {
 
-  @select(
-    itemform("itemselected"),
-    options(items.map(i=>i.name).toList),
-    '_label -> "Item to Update ", '_default -> "-- Select Item --"
-  )
-  @form(action=routes.App.updateItem(1)) {
+
+  @form(action=routes.App.updateItem(index)) {
     @inputText(itemform("name"),'_label -> "Name", '_showConstraints -> false)
     @inputText(itemform("description"),'_label -> "Description", '_showConstraints -> false)
     @inputText(itemform("maker"),'_label -> "Maker", '_showConstraints -> false)
