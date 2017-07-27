@@ -10,7 +10,7 @@ import javax.inject.Inject
 import play.api.i18n.I18nSupport
 import play.api.i18n.MessagesApi
 class Application @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport{
-
+//Day one exercises mainly implemented here
   def index = Action {
     Ok(views.html.index("Hello World")).withCookies(Cookie("theme","blue")).withSession("user"->"Calin")
   }

@@ -50,6 +50,9 @@ GET /select                      controllers.App.seeSelect()
 
 POST /select                       controllers.App.selectItem()
 
+GET    /upload                      controllers.Uploader.index(result:String?="C:/Users/Administrator/Desktop/toUploadTo/bot.png")
+POST   /upload                      controllers.Uploader.upload
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 

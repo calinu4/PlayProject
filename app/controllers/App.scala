@@ -64,16 +64,16 @@ class App @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSu
     formValidationResult.fold({ formWithErrors =>
       BadRequest(views.html.selectitem(formWithErrors)(Item.items))
     }, { name =>
-      val ind=Item.getItem(name)
+      val ind = Item.getItem(name)
       Redirect(routes.App.seeUpdate(ind))
     })
   }
 
-  def seeUpdate(ind:Int) = Action { implicit request =>
+  def seeUpdate(ind: Int) = Action { implicit request =>
     Ok(views.html.updateitem(Item.createItemForm.fill(Item.items(ind)))(Item.items)(ind))
   }
 
-  def updateItem(index:Int) = Action { implicit request =>
+  def updateItem(index: Int) = Action { implicit request =>
     val formValidationResult = Item.createItemForm.bindFromRequest
     formValidationResult.fold({ formWithErrors =>
       BadRequest(views.html.updateitem(formWithErrors)(Item.items)(index))
@@ -82,5 +82,6 @@ class App @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSu
       Redirect(routes.App.listItems())
     })
   }
+
 
 }
