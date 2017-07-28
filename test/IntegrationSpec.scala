@@ -1,9 +1,10 @@
 import org.specs2.mutable._
 import org.specs2.runner._
 import org.junit.runner._
-
+import org.scalatest.junit.JUnitRunner
 import play.api.test._
 import play.api.test.Helpers._
+import play.test.WithBrowser
 
 /**
  * add your integration spec here.

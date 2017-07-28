@@ -3,9 +3,56 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
+GET     /                           controllers.App.index
 
-GET   /page                          controllers.Application.page
+#Second page
+GET   /secondpage                          controllers.Application.secondpage
+
+#Dynamic Content
+GET   /name                          controllers.Application.hello(name:String ?="Default")
+
+#Redirect
+GET /redir                            controllers.Application.redir()
+
+GET /index1                           controllers.Application.index1()
+
+GET /plannedUpdates                    controllers.Application.plannedUpdates()
+
+GET /defaultVal                       controllers.Application.defaultVal()
+
+GET /index2                             controllers.Application.index2(name:String?="Default")
+
+GET /items/$id<[0-9]+>                controllers.Application.show(id:Long)
+
+GET /option                           controllers.Application.optionalVal(title:Option[String])
+
+GET /about                             controllers.Default.redirect(to="secondpage")
+
+GET /index3                              controllers.Application.index3
+
+POST /index3                           controllers.Application.createCustomer
+
+
+GET /listItems                         controllers.App.listItems()
+
+GET /create                       controllers.App.seeItem()
+
+POST /create                       controllers.App.createItem()
+
+GET /delete                       controllers.App.seeDelete()
+POST /delete                      controllers.App.deleteItem()
+
+GET /update                       controllers.App.seeUpdate(ind:Int)
+
+POST /update                       controllers.App.updateItem(index:Int)
+
+GET /select                      controllers.App.seeSelect()
+
+POST /select                       controllers.App.selectItem()
+
+GET    /upload                      controllers.Uploader.index(result:String?="C:/Users/Administrator/Desktop/toUploadTo/bot.png")
+POST   /upload                      controllers.Uploader.upload
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 

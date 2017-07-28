@@ -1,0 +1,18 @@
+@(items:Seq[Item])(implicit messages: Messages)
+@main("Items") {
+
+  <h1>Items</h1>
+  <table>
+    <thead>
+      <tr><th>Item Name   </th><th>Description   </th><th>Maker</th><th>Warranty</th><th>Price</th><th>Discount</th><th>Seller</th>
+    </thead>
+    <tbody>
+    @for(item <- items) {
+      <tr><td>@item.name</td><td>@item.description</td><td>@item.maker</td><td>@item.warranty</td><td>@item.price</td><td>@item.discount</td><td>@item.seller</td></tr>
+    }
+    </tbody>
+  </table>
+
+
+
+}

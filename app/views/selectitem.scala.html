@@ -1,0 +1,15 @@
+@(itemform:Form[String])(items:Seq[Item])(implicit messages: Messages)
+
+@import helper._
+@main("Update Form") {
+
+
+  @form(action=routes.App.selectItem()) {
+    @select(
+      itemform("itemselected"),
+      options(items.map(i=>i.name).toList),
+      '_label -> "Item to Update ", '_default -> "-- Select Item --"
+    )
+    <input type="submit" value="Update Item">
+  }
+}l>

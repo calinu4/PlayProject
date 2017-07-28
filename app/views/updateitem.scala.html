@@ -1,0 +1,17 @@
+@(itemform:Form[Item])(items:Seq[Item])(index:Int)(implicit messages: Messages)
+
+@import helper._
+@main("Update Form") {
+
+
+  @form(action=routes.App.updateItem(index)) {
+    @inputText(itemform("name"),'_label -> "Name", '_showConstraints -> false)
+    @inputText(itemform("description"),'_label -> "Description", '_showConstraints -> false)
+    @inputText(itemform("maker"),'_label -> "Maker", '_showConstraints -> false)
+    @inputText(itemform("warranty"),'_label -> "Warranty", '_showConstraints -> false)
+    @inputText(itemform("price"),'_label -> "Price", '_showConstraints -> false)
+    @inputText(itemform("discount"),'_label -> "Discount", '_showConstraints -> false)
+    @inputText(itemform("seller"),'_label -> "Seller", '_showConstraints -> false)
+    <input type="submit" value="Update Item">
+  }
+}

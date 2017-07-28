@@ -1,0 +1,15 @@
+@(itemform:Form[Item])(implicit messages: Messages)
+
+@import helper._
+@main("Item Form") {
+  @form(action=routes.App.createItem()) {
+    @inputText(itemform("name"),'_label -> "Name", '_showConstraints -> false)
+    @inputText(itemform("description"),'_label -> "Description", '_showConstraints -> false)
+    @inputText(itemform("maker"),'_label -> "Maker", '_showConstraints -> false)
+    @inputText(itemform("warranty"),'_label -> "Warranty", '_showConstraints -> false)
+    @inputText(itemform("price"),'_label -> "Price", '_showConstraints -> false)
+    @inputText(itemform("discount"),'_label -> "Discount", '_showConstraints -> false)
+    @inputText(itemform("seller"),'_label -> "Seller", '_showConstraints -> false)
+    <input type="submit" value="Create Item">
+  }
+}

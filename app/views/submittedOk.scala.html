@@ -1,0 +1,10 @@
+@(customer:Customer)
+
+@main("Customer Created") {
+  <em>The following customer has been created successfully:</em>
+  <div>
+    Customer Name: @customer.name
+    <br>
+    Credit Limit: @customer.creditLimit
+  </div>
+}
